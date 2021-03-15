@@ -9,6 +9,8 @@ instantRadii(slk, srk, sk, l, w):
 
     rlfk = rok - w/2
     rrrk = rok + w/2
+    
+    return rlfk, rrrk
 
 
 sign(value):
