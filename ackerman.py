@@ -1,11 +1,11 @@
-import math as m
+import math
 
 def instantRadii(slk, srk, sk, l, w):
-    rlfk = l / m.sin(slk)
-    rrfk = l / m.sin(rlk)
-    rfk = l / m.sin(sk)
+    rlfk = l / math.sin(slk)
+    rrfk = l / math.sin(rlk)
+    rfk = l / math.sin(sk)
 
-    rok = sign(rfk) * m.sqrt(rfk**2 - l**2)
+    rok = sign(rfk) * math.sqrt(rfk**2 - l**2)
 
     rlfk = rok - w/2
     rrrk = rok + w/2
