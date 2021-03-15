@@ -1,6 +1,6 @@
-import math as m
+import math
 
-instantRadii(slk, srk, sk, l, w):
+def instantRadii(slk, srk, sk, l, w):
     rlfk = l / math.sin(slk)
     rrfk = l / math.sin(rlk)
     rfk = l / math.sin(sk)
@@ -10,8 +10,8 @@ instantRadii(slk, srk, sk, l, w):
     rlfk = rok - w/2
     rrrk = rok + w/2
     
-    return rlfk, rrrk
+    return rlfk, rrrk, rok
 
 
-sign(value):
-    return lambda value: (value>0) - (value<0)
+def sign(value):
+    return 1-(value<=0)
