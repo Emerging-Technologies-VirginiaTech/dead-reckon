@@ -32,3 +32,15 @@ def step5(x_k1, y_k1, v_k1, v_k2,psi_k1, psi_k2, t_s, R_0k1, R_0k2, a_k1, a_k2):
     v_k = v_k1+(t_s/2)*(a_k1+a_k2)
     a_k = a_k1
     return x_k, y_k, psi_k, v_k, a_k
+
+def instantRadii(slk, srk, sk, l, w):
+    rlfk = l / math.sin(slk)
+    rrfk = l / math.sin(slk)
+    rfk = l / math.sin(sk)
+
+    rok = np.sign(rfk) * math.sqrt(rfk**2 - l**2)
+
+    rlfk = rok - w/2
+    rrrk = rok + w/2
+    
+    return rlfk, rrrk, rok
