@@ -1,15 +1,16 @@
 #Ackermann calculation mockup in python
 
-import math 
+import math
+import numpy as np
 
 
 # See step 3 on page 5 of the Kinematic Vehicle Model v3.pdf file
 def step3(dLk, dRk, L):
-    R_LFk = L/sin(dLk)
-    R_RFk = L/sin(dRk)
+    R_LFk = L/math.sin(dLk)
+    R_RFk = L/math.sin(dRk)
     dk = (dLk + dRk)/2
-    R_Fk = L/sin(dk)
-    R_0k = sign(R_Fk)*sqrt(R_Fk^2-L^2)
+    R_Fk = L/math.sin(dk)
+    R_0k = np.sign(R_Fk)*math.sqrt(R_Fk^2-L^2)
     return R_LFk, R_RFk, R_Fk, R_0k
 
 
