@@ -12,7 +12,9 @@ on:
 jobs:
   build:
 
-    runs-on: self-hosted 
+    runs-on: ubuntu-latest 
+
+# Pyton fix: https://github.com/dogweather/raspberry-pi-python-github-runner/blob/main/.github/workflows/python-test.yml
 
     steps:
     - uses: actions/checkout@v2
