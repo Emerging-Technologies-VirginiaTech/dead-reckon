@@ -6,8 +6,9 @@ void handler() {
 }
 
 double step_one( double t_k ) {
-	double s_lk = wheel_angle_left(t_k);
-	double s_rk = wheel_angle_right(t_k);
+	double s[2] = wheel_angle(t_k);
+	double s_lk = s[0];
+	double s_rk = s[1];
 	
 	double s_k = (s_lk + s_rk)/2;
 	
@@ -74,12 +75,34 @@ bool sign(double v) {
 	return v >= 0;
 }
 
-double wheel_angle_right( double t_k ) {
-	//Not implemented
-	return 0;
-}
-
-double wheel_angle_left( double t_k) {
-	//Not implemented
-	return 0;
+double[] wheel_angle( double t_k ) {
+	double s[2] = {};
+	
+	double pL[5] = [-1.22191897683256 * pow(10, -12),-6.93066613014643 * pow(10, -11),-1.22124643965332 * pow(10, -7),7.24441850583487 * pow(10, -6),0];
+	double pR[5] = [1.20293614700595 * pow(10, -12),-3.39308004771036 * pow(10, -10),2.81827614866493 * pow(10, -7),7.24441850583487 * pow(10, -6),0];
+	double pD = 0.00101523919269833;
+	
+	double deltaL = pD * t_k;
+	double deltaR = deltaL;
+	
+	double correction;
+	
+	if(t_k >= 0){
+		correction = pR[0];
+		for(int n = 1; n < 4; i++){
+			correction = pR[n] + correction * t_k;
+		}
+		deltaR = deltaR + correction
+	}
+	else {
+		correction = pL[0];
+		for(int n = 1; n < 4; i++){
+			correction = pL[n] + correction * t_k;
+		}
+		deltaL = deltaL + correction;
+	}
+	s[0] = deltaR;
+	s[1] = deltaL;
+	
+	return s;
 }
