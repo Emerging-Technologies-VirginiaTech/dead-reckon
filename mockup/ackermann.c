@@ -92,7 +92,7 @@ double[] wheel_angle( double t_k ) {
 		for(int n = 1; n < 4; i++){
 			correction = pR[n] + correction * t_k;
 		}
-		deltaR = deltaR + correction
+		deltaR = deltaR + correction;
 	}
 	else {
 		correction = pL[0];
