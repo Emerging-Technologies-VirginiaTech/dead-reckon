@@ -12,7 +12,7 @@ bool sign(double v)
 	return v >= 0;
 }
 
-double[] wheel_angle( double t_k ) {
+double* wheel_angle( double t_k ) {
  	double s[2] = {};
 
  	double pL[5] = [-1.22191897683256 * pow(10, -12),-6.93066613014643 * pow(10, -11),-1.22124643965332 * pow(10, -7),7.24441850583487 * pow(10, -6),0];
@@ -41,10 +41,11 @@ double[] wheel_angle( double t_k ) {
  	s[0] = deltaR;
  	s[1] = deltaL;
 
- 	return s;
+	double *s_ptr = s;
+ 	return s_ptr;
  }
 
-double *step_one(double t_k)
+double* step_one(double t_k)
 {
 	double s[2] = wheel_angle(t_k);
  	double s_lk = s[0];
@@ -53,10 +54,12 @@ double *step_one(double t_k)
  	double s_k = (s_lk + s_rk)/2;
 
 	double arr[3] = {s_lk, s_rk, s_k};
-	return arr;
+
+	double *a_ptr = arr;
+	return a_ptr;
 }
 
-double *step_two(double s_lk, double s_rk, double s_k, double l, double w)
+double* step_two(double s_lk, double s_rk, double s_k, double l, double w)
 {
 	double r_lfk, r_rfk, r_rrk, r_fk, r_lrk, r_ok;
 
@@ -70,10 +73,11 @@ double *step_two(double s_lk, double s_rk, double s_k, double l, double w)
 	r_rrk = r_ok + w / 2;
 
 	double arr[5] = {r_lfk, r_rfk, r_rrk, r_lrk, r_ok};
-	return arr;
+	double *a_ptr = arr;
+	return a_ptr;
 }
 
-double *step_three(double r_ok, double r_lfk, double r_rfk, double v_k, double w, double R)
+double* step_three(double r_ok, double r_lfk, double r_rfk, double v_k, double w, double R)
 {
 	double o_lrk, o_rrk, o_lfk, o_rfk;
 
@@ -87,7 +91,8 @@ double *step_three(double r_ok, double r_lfk, double r_rfk, double v_k, double w
 					  o_rrk,
 					  o_lfk,
 					  o_rfk };
-	return arr;
+	double *a_ptr = arr;
+	return a_ptr;
 }
 
 double* step_four(double R, double t_s, double o_lrk, double o_rrk, double o_lfk, double o_rfk)
@@ -103,7 +108,8 @@ double* step_four(double R, double t_s, double o_lrk, double o_rrk, double o_lfk
 					  s_rrk,
 					  s_lfk,
 					  s_rfk };
-	return arr;
+	double *a_ptr = arr;
+	return a_ptr;
 }
 
 double* step_five(double a_k1, double a_k2, double v_k1, double v_k2, double x_k1, double x_k2, double y_k1, double t_s, double p_k1, double p_k2, double R_k1, double R_k2)
@@ -117,6 +123,7 @@ double* step_five(double a_k1, double a_k2, double v_k1, double v_k2, double x_k
 	y_k = y_k1 + (t_s / 2) * (v_k1 * sin(p_k1) + v_k2 * sin(p_k2));
 
 	double arr[5] = {a_k, v_k, p_k, x_k, y_k};
-	return arr;
+	double *a_ptr = arr;
+	return a_ptr;
 }
 
