@@ -47,7 +47,7 @@ double* wheel_angle( double t_k ) {
 
 double* step_one(double t_k)
 {
-	double s[2] = {}
+	double s[2] = {};
 	memcpy(s, wheel_angle(t_k), sizeof(double) + 1);
  	double s_lk = s[0];
  	double s_rk = s[1];
