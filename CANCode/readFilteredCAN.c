@@ -50,9 +50,9 @@ int main(int argc, char **argv)
 
 	// set canIDs and filters
 	rfilter[0].can_id   = 0x0C1; // front wheel sensors
-	rfilter[0].can_mask = 0xFFF;
+	rfilter[0].can_mask = 0xFFFF;
 	rfilter[1].can_id   = 0x0C5; // rear wheel sensors
-	rfilter[1].can_mask = 0xFFF;
+	rfilter[1].can_mask = 0xFFFF;
 
 	// loop used to print out the data for can IDs 0x0C1, 0x0C5
 	for (int i = 0; i < 2; i++) {
